@@ -11,27 +11,9 @@ app.use(express.json());
 require('dotenv').config();
 const PRIVATE_APP_ACCESS = process.env.HUBSPOT_ACCESS_TOKEN;
 
-// TO Start, create the initial contact route to validate the connection to the HubSpot API
-app.get('/', async (req, res) => {
-    const contacts = 'https://api.hubapi.com/crm/v3/objects/contacts'; // tutorial uses a different endpoint, monitor this for errors
-    const headers = {
-        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
-        'Content-Type': 'application/json'
-    }
-
-    try {
-        const response = await axios.get(contacts, { headers });
-        const data = response.data.results;
-        res.render('contacts', { title: 'Contacts | HubSpot APIs', data });
-    } catch (error) {
-        console.error(error);
-    }
-});
-
-
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
-app.get('/parties', async (req, res) => {
-    const parties = 'https://api.hubapi.com/crm/v3/objects/parties?properties=name,when,venue';
+app.get('/', async (req, res) => {
+    const parties = 'https://api.hubapi.com/crm/v3/objects/parties?properties=id,name,when,venue';
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
@@ -46,25 +28,45 @@ app.get('/parties', async (req, res) => {
     }
 });
 
-// app.get('/parties', async (req, res) => {
-//     const parties = 'https://api.hubapi.com/crm/v3/objects/parties';
+app.get('/update-cobj', async (req, res) => {
+    const partyId = req.query.id;
+    const party = `https://api.hubapi.com/crm/v3/objects/parties/${partyId}?properties=id,name,when,venue`; // Correct endpoint format
+
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    }
+
+    try {
+        const response = await axios.get(party, { headers });
+        const data = response.data;
+        // res.json(data);
+        res.render('updates', { title: 'Update Custom Object Form | Integrating With HubSpot I Practicum.', data });
+
+    } catch (error) {
+        console.error(error);
+    }
+});
+
+// TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
+
+// app.get('update', async (req, res) => {
+//     // const id = req.query.id;
+
+//     const getParty = 'https://api.hubapi.com/crm/v3/objects/parties?id=14849333616';
 //     const headers = {
 //         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
 //         'Content-Type': 'application/json'
 //     }
 //     try {
-//         const resp = await axios.get(parties, { headers });
-//         const data = resp.data.results;
-//         res.render('parties', { title: 'Parties | HubSpot APIs', data });
+//         const response = await axios.get(getParty, { headers });
+//         const data = response.data;
+//         res.json(data);
 //     } catch (error) {
-//         console.error(error);
+//         console.error(`error found: ${error}`);
 //     }
-// })
-// * Code for Route 1 goes here
+// });
 
-// TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
-
-// * Code for Route 2 goes here
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 

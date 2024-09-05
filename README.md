@@ -38,21 +38,21 @@ ___
 - [x] Install node modules
 
 ### Routes
-- [ ] app.get route for the homepage
-- [ ] app.get for rendering the HTML form in a pug template called updates. ("/update-cobj"). The HTML form should have fields to create a new CRM record with the three custom object properties.
+- [x] app.get route for the homepage
+- [x] app.get for rendering the HTML form in a pug template called updates. ("/update-cobj"). The HTML form should have fields to create a new CRM record with the three custom object properties.
 - [ ] app.post for the route that sends along the data captured by the HTML form
 
 ### Views
 - [x] Create a new pug template called updates in the views folder
-- [ ] Render the updates template and pass along a page title called "Update Custom Object Form | Integrating With HubSpot I Practicum."
-- [ ] In the updates pug template, add a link “Return to the homepage” that links to the root route.
+- [x] Render the updates template and pass along a page title called "Update Custom Object Form | Integrating With HubSpot I Practicum."
+- [x] In the updates pug template, add a link “Return to the homepage” that links to the root route.
 
 ### Handle app.post route
 - [ ] Make a POST request with the HTML form data to create a new CRM record
 - [ ] After the CRM record is created, write a redirect back to the homepage.
 
 ### Handle the app.get route
-- [ ] Make a GET request to retrieve the CRM record data. Make sure to get al of the custom property fields data.
+- [x] Make a GET request to retrieve the CRM record data. Make sure to get al of the custom property fields data.
 - [ ] Create a pug template called homepage in the views folder to render an HTML table.
 - [ ] Pass the CRM record data as a variable to the template. The template should display the list of custom objects in a table format with columns for the custom object's individual properties.
 - [ ] In the homepage pug template, add a link at the top that says "Add to this table" and links to the "/update-cobj" route. See screenshot in practicum for example.

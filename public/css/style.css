@@ -46,9 +46,7 @@ label, input {
     font-size: inherit;
 }
 
-input[type="text"] {
-    padding: .25rem;
-}
+
 
 input[type="submit"] {
     background-color: lightgrey;
