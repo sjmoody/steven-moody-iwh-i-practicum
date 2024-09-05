@@ -60,7 +60,7 @@ ___
 ### Testing
 - [x] Test your app by running node index.js in your terminal and open up the link to the localhost to make sure it works as expected. You should be able to create a new CRM record on the update-cobj route and then see those changes reflected in the homepage table.
 - [] Re-merge your working branch into your main branch in Github. Copy the shareable link to the forked repo and paste it into the input field in the "Submit INtegrating with Hubspot" form on the academy and click Submit.
-- [] Be sure the repo is public.
+- [x] Be sure the repo is public.
 
 
 
