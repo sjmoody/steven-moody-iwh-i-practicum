@@ -22,7 +22,46 @@ ___
 - Using the command line
 - Using [Git and GitHub](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
 
+
 ## Requirements
-- All work must be your own. During the grading process we will check the revision history. Submissions that do not meet this requirement will not be considered.
-- You must have at least two new routes in your index.js file and one new pug template for the homepage.
-- You must create a developer test account and link to it in your README.md file. Submissions that do not meet this requirement will not be considered.
+### Basics
+- [ ]  All work must be your own. During the grading process we will check the revision history. Submissions that do not meet this requirement will not be considered.
+- [ ]  You must have at least two new routes in your index.js file and one new pug template for the homepage.
+- [ ]  You must create a developer test account and link to it in your README.md file. Submissions that do not meet this requirement will not be considered.
+- [ ] Create a new developer test account
+- [ ] Create a private app with the right title and permissions
+- [ ] Create a custom object with three properties, three records, and association to contacts
+- [ ] Fork Github repo and follow the instructions
+[ ] Add to README a link to custom object in HubSpot
+[ ] Create a new branch off the main branch and run checkout
+[ ] Make first commit with message
+[ ] Install node modules
+
+### Routes
+- [ ] app.get route for the homepage
+- [ ] app.get for rendering the HTML form in a pug template called updates. ("/update-cobj"). The HTML form should have fields to create a new CRM record with the three custom object properties.
+- [ ] app.post for the route that sends along the data captured by the HTML form
+
+### Views
+- [ ] Create a new pug template called updates in the views folder
+- [ ] Render the updates template and pass along a page title called "Update Custom Object Form | Integrating With HubSpot I Practicum."
+- [ ] In the updates pug template, add a link “Return to the homepage” that links to the root route.
+
+### Handle app.post route
+- [ ] Make a POST request with the HTML form data to create a new CRM record
+- [ ] After the CRM record is created, write a redirect back to the homepage.
+
+### Handle the app.get route
+- [ ] Make a GET request to retrieve the CRM record data. Make sure to get al of the custom property fields data.
+- [ ] Create a pug template called homepage in the views folder to render an HTML table.
+- [ ] Pass the CRM record data as a variable to the template. The template should display the list of custom objects in a table format with columns for the custom object's individual properties.
+- [ ] In the homepage pug template, add a link at the top that says "Add to this table" and links to the "/update-cobj" route. See screenshot in practicum for example.
+
+### Testing
+- [ ] Test your app by running node index.js in your terminal and open up the link to the localhost to make sure it works as expected. You should be able to create a new CRM record on the update-cobj route and then see those changes reflected in the homepage table.
+- [ ] Re-merge your working branch into your main branch in Github. Copy the shareable link to the forked repo and paste it into the input field in the "Submit INtegrating with Hubspot" form on the academy and click Submit.
+- [ ] Be sure the repo is public.
+
+
+
+
