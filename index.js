@@ -22,55 +22,75 @@ app.get('/', async (req, res) => {
     try {
         const response = await axios.get(parties, { headers });
         const data = response.data.results;
-        res.render('parties', { title: 'Parties | HubSpot APIs', data });
+        res.render('homepage', { title: 'Parties | HubSpot APIs', data });
     } catch (error) {
         console.error(error);
     }
 });
 
+
+
+// TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
+
 app.get('/update-cobj', async (req, res) => {
     const partyId = req.query.id;
-    const party = `https://api.hubapi.com/crm/v3/objects/parties/${partyId}?properties=id,name,when,venue`; // Correct endpoint format
 
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     }
 
-    try {
-        const response = await axios.get(party, { headers });
-        const data = response.data;
-        // res.json(data);
-        res.render('updates', { title: 'Update Custom Object Form | Integrating With HubSpot I Practicum.', data });
+    if (partyId) {
+        const party = `https://api.hubapi.com/crm/v3/objects/parties/${partyId}?properties=id,name,when,venue`;
+        try {
+            const response = await axios.get(party, { headers });
+            const data = response.data;
+            // res.json(data);
+            res.render('updates', { title: 'Update Custom Object Form | Integrating With HubSpot I Practicum.', data });
 
-    } catch (error) {
-        console.error(error);
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        res.render('updates', { title: 'Update Custom Object Form | Integrating With HubSpot I Practicum.', data: {} });
     }
+
+
 });
-
-// TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
-
-// app.get('update', async (req, res) => {
-//     // const id = req.query.id;
-
-//     const getParty = 'https://api.hubapi.com/crm/v3/objects/parties?id=14849333616';
-//     const headers = {
-//         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
-//         'Content-Type': 'application/json'
-//     }
-//     try {
-//         const response = await axios.get(getParty, { headers });
-//         const data = response.data;
-//         res.json(data);
-//     } catch (error) {
-//         console.error(`error found: ${error}`);
-//     }
-// });
 
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
-// * Code for Route 3 goes here
+app.post('/update-cobj', async (req, res) => {
+    const update = {
+        properties: {
+            "name": req.body.name,
+            "when": req.body.when,
+            "venue": req.body.venue
+        }
+    }
+
+    const partyId = req.query.id;
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    };
+
+    try {
+        if (partyId) {
+            // Update existing record
+            const updateParty = `https://api.hubapi.com/crm/v3/objects/parties/${partyId}`;
+            await axios.patch(updateParty, update, { headers });
+        } else {
+            // Create new record
+            const createParty = `https://api.hubapi.com/crm/v3/objects/parties`;
+            await axios.post(createParty, update, { headers });
+        }
+        res.redirect('/');
+    } catch(err) {
+        console.error(err);
+    }
+});
 
 /**
 * * This is sample code to give you a reference for how you should structure your calls.

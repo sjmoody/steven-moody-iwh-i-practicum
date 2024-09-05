@@ -4,18 +4,21 @@ html
       title= `${title}`
         link(rel="stylesheet", href="/css/style.css")
     body
-      h1 Update Party Details
+      if data.properties
+        h1 Update Party Details
+      else
+        h1 Add a New Party
       .form-wrapper
         form(method="POST")
           div
             label(for="name") Name:
-            input(type="text" id="name" name="name" placeholder=data.properties.name style="width: 350px;")
+            input(type="text" id="name" name="name" value=(data.properties ? data.properties.name : '') style="width: 350px;")
           div
             label(for="when") When:
-            input(type="text" id="when" name="when" placeholder=data.properties.when style="width: 350px;")
+            input(type="text" id="when" name="when" value=(data.properties ? data.properties.when : '') style="width: 350px;")
           div
             label(for="venue") Venue:
-            input(type="text" id="venue" name="venue" placeholder=data.properties.venue style="width: 350px;")
+            input(type="text" id="venue" name="venue" value=(data.properties ? data.properties.venue : '') style="width: 350px;")
           input(type="submit" value="Update")
           .return-link
             a.btn.btn-primary(href="/") Return to the homepage

@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        h1 Custom Objects
+        a(href="/update-cobj") Add to this table
+        table
+            thead
+                tr
+                    th Name
+                    th Venue
+                    th When
+                    th ID
+                    th Actions
+            tbody
+                each object in data
+                    tr
+                        td #{object.properties.name}
+                        td #{object.properties.venue}
+                        td #{object.properties.when}
+                        td #{object.id}
+                        td
+                            a(href=`/update-cobj?id=${object.id}`) Edit
