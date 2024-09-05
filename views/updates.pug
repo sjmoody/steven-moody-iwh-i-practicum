@@ -1,0 +1,21 @@
+//- - [ ] Render the updates template and pass along a page title called "Update Custom Object Form | Integrating With HubSpot I Practicum."
+//- - [ ] In the updates pug template, add a link “Return to the homepage” that links to the root route.
+
+doctype html
+html
+    head
+      title Update party info
+        link(rel="stylesheet", href="/css/style.css")
+    body
+      .form-wrapper
+        p Name: #{partyName}
+        p When: #{partyWhen}
+        p Venue: #{partyVenue}
+        form(method="POST")
+          label(for="name") Name:
+          input(type="text" id="name" name="name")
+          label(for="when") When:
+          input(type="text" id="when" name="when")
+          label(for="venue") Venue:
+          input(type="text" id="venue" name="venue")
+          input(type="submit" value="Update")

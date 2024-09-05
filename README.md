@@ -25,17 +25,17 @@ ___
 
 ## Requirements
 ### Basics
-- [ ]  All work must be your own. During the grading process we will check the revision history. Submissions that do not meet this requirement will not be considered.
-- [ ]  You must have at least two new routes in your index.js file and one new pug template for the homepage.
-- [ ]  You must create a developer test account and link to it in your README.md file. Submissions that do not meet this requirement will not be considered.
-- [ ] Create a new developer test account
-- [ ] Create a private app with the right title and permissions
-- [ ] Create a custom object with three properties, three records, and association to contacts
-- [ ] Fork Github repo and follow the instructions
-[ ] Add to README a link to custom object in HubSpot
-[ ] Create a new branch off the main branch and run checkout
-[ ] Make first commit with message
-[ ] Install node modules
+- [x]  All work must be your own. During the grading process we will check the revision history. Submissions that do not meet this requirement will not be considered.
+- [x]  You must have at least two new routes in your index.js file and one new pug template for the homepage.
+- [x]  You must create a developer test account and link to it in your README.md file. Submissions that do not meet this requirement will not be considered.
+- [x] Create a new developer test account
+- [x] Create a private app with the right title and permissions
+- [x] Create a custom object with three properties, three records, and association to contacts
+- [x] Fork Github repo and follow the instructions
+- [x] Add to README a link to custom object in HubSpot
+- [x] Create a new branch off the main branch and run checkout
+- [x] Make first commit with message
+- [x] Install node modules
 
 ### Routes
 - [ ] app.get route for the homepage
@@ -43,7 +43,7 @@ ___
 - [ ] app.post for the route that sends along the data captured by the HTML form
 
 ### Views
-- [ ] Create a new pug template called updates in the views folder
+- [x] Create a new pug template called updates in the views folder
 - [ ] Render the updates template and pass along a page title called "Update Custom Object Form | Integrating With HubSpot I Practicum."
 - [ ] In the updates pug template, add a link “Return to the homepage” that links to the root route.
 

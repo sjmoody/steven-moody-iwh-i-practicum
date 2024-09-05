@@ -1,0 +1,15 @@
+//- add properties name, when, and venue.
+doctype html
+html
+    head
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        h1 Parties
+        .cards
+            each party in data
+                .card
+                    h2.card__name #{party.properties.name}
+                    h3.card_venue #{party.properties.venue}
+                    p.card_when #{party.properties.when}
